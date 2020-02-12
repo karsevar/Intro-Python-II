@@ -68,12 +68,12 @@ room['treasure'].s_to = room['narrow']
 def print_items(item_array):
 
     if len(item_array) > 0:
-        print('Items in the Room:')
+        print('\nItems in the Room:')
         # print(item_array[0])
         for item in item_array:
             print(item)
     else:
-        print('No items in Room.')
+        print('\nNo items in Room.')
 
 # Pick the name of the character in the game.
 player_name = input('Before you proceed, please type in a name for your player! ')
@@ -84,11 +84,13 @@ current_room = room['outside']
 # initializes the Player class with user inputted name and initial room (cave entrance)
 character = Player(player_name, room['outside'])
 
+print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
+
 while True:
 
     print_items(current_room.items)
 
-    user_input = input('Please enter a direction you want the player to move. Selections include: [n, s, e, w]! ')
+    user_input = input('\nPlease enter a direction you want the player to move. Selections include: [n, s, e, w]! ')
 
     user_input = user_input.split(' ')
 
@@ -136,7 +138,7 @@ while True:
 
         elif user_input[0] == 'i' or user_input[0] == 'inventory':
 
-            print('Character\'s item inventory: ')
+            print('\nCharacter\'s item inventory: ')
             for item in character.items:
                 print(item)
 
@@ -146,7 +148,7 @@ while True:
 
         else:
 
-            print('Please use the valid inputs [n, s, e, w] to move or q to quit')
+            print('\nPlease use the valid inputs [n, s, e, w] to move, drop [item] and take [item], i to check inventory, or q to quit\n')
 
     elif len(user_input) == 2:
 
@@ -160,7 +162,7 @@ while True:
 
             else:
 
-                print(f'Can\'t find item {user_input[1]} in room {current_room.name}')
+                print(f'\nCan\'t find item {user_input[1]} in room {current_room.name}\n')
 
         elif user_input[0] == 'drop':
             
@@ -172,8 +174,12 @@ while True:
 
             else:
 
-                print(f'Can\'t find item {user_input[1]} in inventory')
+                print(f'\nCan\'t find item {user_input[1]} in inventory\n')
 
         else:
 
-            print('Please use the valid inputs [n, s, e, w] to move, drop and take for items, or q to quit')
+            print('\nPlease use the valid inputs [n, s, e, w] to move, drop [item] and take [item], i to check inventory, or q to quit\n')
+
+    elif len(user_input) > 2:
+
+        print('User input exceeded input limit. Maximum input accepted 2 words')
