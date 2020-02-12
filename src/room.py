@@ -6,10 +6,10 @@ class Room:
 
         self.name = name 
         self.description = description
-        self.n_to = 'Sorry there is no room north of {}'.format(self.name)
-        self.s_to = 'Sorry there is no room south of {}'.format(self.name)
-        self.e_to = 'Sorry there is no room east of {}'.format(self.name)
-        self.w_to = 'Sorry there is no room west of {}'.format(self.name)
+        self.n_to = 'Sorry there is no room north of {}\n'.format(self.name)
+        self.s_to = 'Sorry there is no room south of {}\n'.format(self.name)
+        self.e_to = 'Sorry there is no room east of {}\n'.format(self.name)
+        self.w_to = 'Sorry there is no room west of {}\n'.format(self.name)
         self.items = items
 
     def search_item(self, item):

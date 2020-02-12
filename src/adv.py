@@ -86,8 +86,6 @@ character = Player(player_name, room['outside'])
 
 while True:
 
-    print(f'\nCurrent room: name {current_room.name}, description {current_room.description}\n')
-
     print_items(current_room.items)
 
     user_input = input('Please enter a direction you want the player to move. Selections include: [n, s, e, w]! ')
@@ -101,7 +99,9 @@ while True:
             if not isinstance(current_room.n_to, str):
                 current_room = current_room.n_to
                 character.current_room = current_room
+                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
             else:
+                print(f'~~~~Error~~~~~\n')
                 print(current_room.n_to)
 
         elif user_input[0] == 's':
@@ -109,7 +109,9 @@ while True:
             if not isinstance(current_room.s_to, str):
                 current_room = current_room.s_to
                 character.current_room = current_room
+                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
             else:
+                print(f'~~~~Error~~~~~\n')
                 print(current_room.s_to)
         
         elif user_input[0] == 'e':
@@ -117,7 +119,9 @@ while True:
             if not isinstance(current_room.e_to, str):
                 current_room = current_room.e_to
                 character.current_room = current_room
+                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
             else:
+                print(f'~~~~Error~~~~~\n')
                 print(current_room.e_to)
 
         elif user_input[0] == 'w':
@@ -125,7 +129,9 @@ while True:
             if not isinstance(current_room.w_to, str):
                 current_room = current_room.w_to
                 character.current_room = current_room
+                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
             else:
+                print(f'~~~~Error~~~~~\n')
                 print(current_room.w_to)
 
         elif user_input[0] == 'i' or user_input[0] == 'inventory':
