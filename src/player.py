@@ -20,6 +20,14 @@ class Player:
             if item == item_name.name:
                 return self.items.pop(self.items.index(item_name))
 
+    def move(self, direction):
+        next_room = getattr(self.current_room, f'{direction}_to')
+        if isinstance(next_room, str):
+            print(f'\n~~~~Error~~~~~\n')
+            print(next_room)
+        else:
+            self.current_room = next_room
+            print(f'\nCurrent room: name {next_room.name}\n description {next_room.description}\n')
 
     def pickup_item(self, item):
 

@@ -63,6 +63,9 @@ room['treasure'].s_to = room['narrow']
 
 # helper function that evaluates whether there is a room in user 
 # specified direction:
+#def has_room():
+
+
 
 # helper function used to print all the items in a room:
 def print_items(item_array):
@@ -81,6 +84,8 @@ player_name = input('Before you proceed, please type in a name for your player! 
 # Initial room variable:
 current_room = room['outside']
 
+print(current_room.n_to)
+
 # initializes the Player class with user inputted name and initial room (cave entrance)
 character = Player(player_name, room['outside'])
 
@@ -96,45 +101,9 @@ while True:
 
     if len(user_input) == 1:
 
-        if user_input[0] == 'n':
-
-            if not isinstance(current_room.n_to, str):
-                current_room = current_room.n_to
-                character.current_room = current_room
-                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
-            else:
-                print(f'~~~~Error~~~~~\n')
-                print(current_room.n_to)
-
-        elif user_input[0] == 's':
-
-            if not isinstance(current_room.s_to, str):
-                current_room = current_room.s_to
-                character.current_room = current_room
-                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
-            else:
-                print(f'~~~~Error~~~~~\n')
-                print(current_room.s_to)
-        
-        elif user_input[0] == 'e':
-
-            if not isinstance(current_room.e_to, str):
-                current_room = current_room.e_to
-                character.current_room = current_room
-                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
-            else:
-                print(f'~~~~Error~~~~~\n')
-                print(current_room.e_to)
-
-        elif user_input[0] == 'w':
-
-            if not isinstance(current_room.w_to, str):
-                current_room = current_room.w_to
-                character.current_room = current_room
-                print(f'\nCurrent room: name {current_room.name}\n description {current_room.description}\n')
-            else:
-                print(f'~~~~Error~~~~~\n')
-                print(current_room.w_to)
+        if user_input[0] == 'n' or user_input[0] == 's' or user_input[0] == 'e' or user_input[0] == 'w':
+            character.move(user_input[0])
+            current_room = character.current_room
 
         elif user_input[0] == 'i' or user_input[0] == 'inventory':
 
@@ -155,31 +124,24 @@ while True:
         if user_input[0] == 'take':
 
             if current_room.search_item(user_input[1]):
-
                 acquired_item = current_room.lose_item(user_input[1])
                 acquired_item.on_take()
                 character.pickup_item(acquired_item)
 
             else:
-
                 print(f'\nCan\'t find item {user_input[1]} in room {current_room.name}\n')
 
         elif user_input[0] == 'drop':
             
             if character.search_inventory(user_input[1]):
-
                 reclaim_item = character.drop_item(user_input[1])
-
                 current_room.restock_item(reclaim_item)
 
             else:
-
                 print(f'\nCan\'t find item {user_input[1]} in inventory\n')
 
         else:
-
             print('\nPlease use the valid inputs [n, s, e, w] to move, drop [item] and take [item], i to check inventory, or q to quit\n')
 
     elif len(user_input) > 2:
-
         print('User input exceeded input limit. Maximum input accepted 2 words')
