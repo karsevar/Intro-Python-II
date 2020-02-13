@@ -65,19 +65,6 @@ room['treasure'].s_to = room['narrow']
 # specified direction:
 #def has_room():
 
-
-
-# helper function used to print all the items in a room:
-# def print_items(item_array):
-
-#     if len(item_array) > 0:
-#         print('\nItems in the Room:')
-#         # print(item_array[0])
-#         for item in item_array:
-#             print(item)
-#     else:
-#         print('\nNo items in Room.')
-
 # Pick the name of the character in the game.
 player_name = input('Before you proceed, please type in a name for your player! ')
 
@@ -101,11 +88,11 @@ while True:
 
     if len(user_input) == 1:
 
-        if user_input[0] == 'n' or user_input[0] == 's' or user_input[0] == 'e' or user_input[0] == 'w':
+        if user_input[0] in ['n','s','w','e']:
             character.move(user_input[0])
             current_room = character.current_room
 
-        elif user_input[0] == 'i' or user_input[0] == 'inventory':
+        elif user_input[0] in ['i', 'inventory']:
             character.show_inventory()
 
         elif user_input[0] == 'q':
@@ -113,7 +100,6 @@ while True:
             break
 
         else:
-
             print('\nPlease use the valid inputs [n, s, e, w] to move, drop [item] and take [item], i to check inventory, or q to quit\n')
 
     elif len(user_input) == 2:
