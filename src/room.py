@@ -18,6 +18,15 @@ class Room:
                 return True 
         return False
 
+    def show_items(self):
+        if len(self.items) > 0:
+            print(f'\nItems in {self.name}:')
+            # print(item_array[0])
+            for item in self.items:
+                print(item)
+        else:
+            print(f'\nNo items in {self.name}.')
+
     def restock_item(self, item):
         self.items.append(item)
 

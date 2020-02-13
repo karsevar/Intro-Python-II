@@ -9,6 +9,14 @@ class Player:
         self.current_room = current_room
         self.items = []
 
+    def show_inventory(self):
+        if len(self.items) > 0:
+            print(f'\n{self.name}\'s item inventory: ')
+            for item in self.items:
+                print(item)
+        else:
+            print(f'\nCharacter {self.name} needs items!')
+
     def search_inventory(self, item):
         for item_name in self.items:
             if item == item_name.name:
