@@ -17,16 +17,14 @@ class Player:
         else:
             print(f'\nCharacter {self.name} needs items!')
 
-    def search_inventory(self, item):
-        for item_name in self.items:
-            if item == item_name.name:
-                return True 
-        return False
-
     def drop_item(self, item):
         for item_name in self.items:
             if item == item_name.name:
-                return self.items.pop(self.items.index(item_name))
+                reclaim_item = self.items.pop(self.items.index(item_name))
+                self.current_room.restock_item(reclaim_item)
+                return f'{reclaim_item.name} has been returned to room {self.current_room.name}'
+
+        return f'\nCan\'t find item {item} in inventory\n'
 
     def move(self, direction):
         next_room = getattr(self.current_room, f'{direction}_to')
@@ -39,7 +37,13 @@ class Player:
 
     def pickup_item(self, item):
 
-        self.items.append(item)
+        if self.current_room.search_item(item):
+            acquired_item = self.current_room.lose_item(item)
+            print(acquired_item)
+            acquired_item.on_take()
+            self.items.append(acquired_item)
+        else: 
+            print(f'\nCan\'t find item {item} in room {self.current_room.name}\n')
 
     def __str__(self):
         return str(self.__dict__) 

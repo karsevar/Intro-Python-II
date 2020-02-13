@@ -105,23 +105,10 @@ while True:
     elif len(user_input) == 2:
 
         if user_input[0] == 'take':
-
-            if current_room.search_item(user_input[1]):
-                acquired_item = current_room.lose_item(user_input[1])
-                acquired_item.on_take()
-                character.pickup_item(acquired_item)
-
-            else:
-                print(f'\nCan\'t find item {user_input[1]} in room {current_room.name}\n')
+            character.pickup_item(user_input[1])
 
         elif user_input[0] == 'drop':
-            
-            if character.search_inventory(user_input[1]):
-                reclaim_item = character.drop_item(user_input[1])
-                current_room.restock_item(reclaim_item)
-
-            else:
-                print(f'\nCan\'t find item {user_input[1]} in inventory\n')
+            print(character.drop_item(user_input[1]))
 
         else:
             print('\nPlease use the valid inputs [n, s, e, w] to move, drop [item] and take [item], i to check inventory, or q to quit\n')
