@@ -39,7 +39,6 @@ class Player:
 
         if self.current_room.search_item(item):
             acquired_item = self.current_room.lose_item(item)
-            print(acquired_item)
             acquired_item.on_take()
             self.items.append(acquired_item)
         else: 

@@ -71,8 +71,6 @@ player_name = input('Before you proceed, please type in a name for your player! 
 # Initial room variable:
 current_room = room['outside']
 
-print(current_room.n_to)
-
 # initializes the Player class with user inputted name and initial room (cave entrance)
 character = Player(player_name, room['outside'])
 
