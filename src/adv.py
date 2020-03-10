@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -55,24 +56,18 @@ print(room['outside'].n_to)
 # initial input for the REPL.
 
 print('Welcome to the text room adventure game!!!\n')
+player_name = input('Please enter a name for your player!\n')
+character = Player(player_name)
 user_input = 0
-current_room = room['outside']
+character.current_room = room['outside']
 
 while user_input != 'q':
     user_input = input('\nPlease pick one of the four direction commands [n, s, e, or w] or q to quit\n')
     if user_input == 'n':
-        print(current_room.n_to)
-        if type(current_room.n_to) != str:
-            current_room = current_room.n_to
+        character.move('n_to')
     elif user_input == 's':
-        print(current_room.s_to)
-        if type(current_room.s_to) != str:
-            current_room = current_room.s_to
+        character.move('s_to')
     elif user_input == 'w':
-        print(current_room.w_to)
-        if type(current_room.w_to) != str:
-            current_room = current_room.w_to
+        character.move('w_to')
     elif user_input == 'e':
-        print(current_room.e_to)
-        if type(current_room.e_to) != str:
-            current_room = current_room.e_to
+        character.move('e_to')
