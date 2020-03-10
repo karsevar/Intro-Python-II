@@ -56,14 +56,23 @@ print(room['outside'].n_to)
 
 print('Welcome to the text room adventure game!!!\n')
 user_input = 0
+current_room = room['outside']
 
 while user_input != 'q':
-    user_input = input('Please pick one of the four direction commands [n, s, e, or w] or q to quit\n')
+    user_input = input('\nPlease pick one of the four direction commands [n, s, e, or w] or q to quit\n')
     if user_input == 'n':
-        print('heading north')
+        print(current_room.n_to)
+        if type(current_room.n_to) != str:
+            current_room = current_room.n_to
     elif user_input == 's':
-        print('heading south')
+        print(current_room.s_to)
+        if type(current_room.s_to) != str:
+            current_room = current_room.s_to
     elif user_input == 'w':
-        print('heading west')
+        print(current_room.w_to)
+        if type(current_room.w_to) != str:
+            current_room = current_room.w_to
     elif user_input == 'e':
-        print('heading east')
+        print(current_room.e_to)
+        if type(current_room.e_to) != str:
+            current_room = current_room.e_to
