@@ -74,14 +74,8 @@ while user_input != 'q':
     user_input = user_input.split(' ') 
     if len(user_input) == 1:
         user_input = user_input[0]
-        if user_input == 'n':
-            character.move('n_to')
-        elif user_input == 's':
-            character.move('s_to')
-        elif user_input == 'w':
-            character.move('w_to')
-        elif user_input == 'e':
-            character.move('e_to')
+        if user_input in ['n','s','w','e']:
+            character.move(user_input)
         elif user_input == 'i':
             character.show_inventory()
         elif user_input == 'q':
@@ -93,9 +87,10 @@ while user_input != 'q':
         item = user_input[1]
         if verb == 'take':
             character.take_item(item)
-        # elif verb == 'drop':
-
-
+        elif verb == 'drop':
+            character.drop_item(item)
+        else:
+            print('\n~~~~~~Invalid Command~~~~~~~\n')
     else:
         print('\n~~~~~Invalid Command Length~~~~~~~~\n')
 

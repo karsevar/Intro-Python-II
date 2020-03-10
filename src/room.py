@@ -23,12 +23,10 @@ class Room:
             print(f'{item}')
 
     def reclaim_item(self, item):
-        
+        self.items.append(item)
 
     def __str__(self):
-        if len(self.items) > 0:
-            return f'name: {self.name}\ndescription: {self.description}\nItems In Room: {self.items}'
-        else:
-            return f'name: {self.name}\ndescription: {self.description}\nItems In Room: No Items'
+        return f'name: {self.name}\ndescription: {self.description}'
+  
 
     

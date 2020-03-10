@@ -8,9 +8,9 @@ class Player:
         self.items = []
 
     def move(self, direction):
-        print(getattr(self.current_room, direction))
-        if type(getattr(self.current_room, direction)) != str:
-            self.current_room = getattr(self.current_room, direction)
+        print(getattr(self.current_room, f'{direction}_to'))
+        if type(getattr(self.current_room, f'{direction}_to')) != str:
+            self.current_room = getattr(self.current_room, f'{direction}_to')
             self.current_room.show_inventory()
 
     def take_item(self, item):
@@ -28,9 +28,9 @@ class Player:
     def drop_item(self, item):
         for item_index in range(len(self.items)):
             if self.items[item_index].name == item:
-                self.items[item_index].on_take()
-                return self.items.pop(item_index)
-        return f'item {item} in character inventory'
+                self.current_room.reclaim_item(self.items.pop(item_index))
+                return None
+        print(f'Cannot find item {item} in character inventory.')
 
     def __str__(self):
         return f'character name: {self.name}, current_room: {self.current_room}'
