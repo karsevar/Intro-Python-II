@@ -33,6 +33,8 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+print(room['outside'].n_to)
+
 #
 # Main
 #
@@ -49,3 +51,19 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# initial input for the REPL.
+
+print('Welcome to the text room adventure game!!!\n')
+user_input = 0
+
+while user_input != 'q':
+    user_input = input('Please pick one of the four direction commands [n, s, e, or w] or q to quit\n')
+    if user_input == 'n':
+        print('heading north')
+    elif user_input == 's':
+        print('heading south')
+    elif user_input == 'w':
+        print('heading west')
+    elif user_input == 'e':
+        print('heading east')
