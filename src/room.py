@@ -18,7 +18,7 @@ class Room:
         return f'item {item} not found in room {self.name}'
     
     def show_inventory(self):
-        print(f'Items in room {self.name}:')
+        print(f'\nItems in room {self.name}:')
         for item in self.items:
             print(f'{item}')
 

@@ -68,7 +68,8 @@ player_name = input('Please enter a name for your player!\n')
 character = Player(player_name)
 user_input = 0
 character.current_room = room['outside']
-
+print(character.current_room)
+character.current_room.show_inventory()
 while user_input != 'q':
     user_input = input('\nPlease pick one of the four direction commands [n, s, e, or w],\nuse the phrase commmand take [item] or drop [item],\nor q to quit\n')
     user_input = user_input.split(' ') 
